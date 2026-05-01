@@ -33,7 +33,7 @@ On the retail website these yellow keys were advertised as "Gateron SMD Yellow S
 
 ![Keys](photos/case_with_keys_2.jpg)
 
-Also: [high-resolution photo of the PCB](photos/photos/pcb_hi_res.jpg) - if you need to squint and trace some lines...
+Also: [high-resolution photo of the PCB](photos/pcb_hi_res.jpg) - if you need to squint and trace some lines...
 
 ### Original Software
 
