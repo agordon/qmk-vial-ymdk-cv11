@@ -1,0 +1,112 @@
+{
+    "manufacturer": "MTKB",
+    "keyboard_name": "CV11-gordon",
+    "maintainer": "qmk",
+    "development_board": "bluepill",
+    "bootloader": "custom",
+    "processor": "STM32F103",
+    "url": "",
+    "usb": {
+        "device_version": "0.0.2",
+        "pid": "0x1102",
+        "vid": "0x45D4"
+    },
+    "features": {
+        "bootmagic": true,
+        "console": true,
+        "extrakey": true,
+        "encoder_map": true,
+        "encoder": true,
+        "rgb_matrix": true,
+        "via": true,
+	"vial" : true,
+        "midi": true
+    },
+    "debounce": 5,
+    "ws2812": {
+        "pin": "B9",
+        "driver": "pwm"
+    },
+    "rgb_matrix": {
+        "driver": "ws2812",
+        "led_count": 11,
+        "max_brightness": 75,
+        "default": {
+            "animation": "cycle_spiral",
+            "speed": 84,
+            "val": 64
+        },
+        "animations": {
+            "solid_color": true,
+            "alphas_mods": true,
+            "gradient_up_down": true,
+            "gradient_left_right": true,
+            "breathing": true,
+            "band_sat": true,
+            "band_val": true,
+            "band_pinwheel_sat": true,
+            "band_pinwheel_val": true,
+            "band_spiral_sat": true,
+            "band_spiral_val": true,
+            "cycle_all": true,
+            "cycle_left_right": true,
+            "cycle_up_down": true,
+            "rainbow_moving_chevron": true,
+            "cycle_out_in": true,
+            "cycle_out_in_dual": true,
+            "cycle_pinwheel": true,
+            "cycle_spiral": true,
+            "dual_beacon": true,
+            "rainbow_beacon": true,
+            "rainbow_pinwheels": true,
+            "raindrops": true,
+            "jellybean_raindrops": true,
+            "hue_breathing": true,
+            "hue_pendulum": true,
+            "hue_wave": true,
+            "typing_heatmap": true,
+            "digital_rain": true,
+            "solid_reactive_simple": true,
+            "solid_reactive": true,
+            "solid_reactive_wide": true,
+            "solid_reactive_multiwide": true,
+            "solid_reactive_cross": true,
+            "solid_reactive_multicross": true,
+            "solid_reactive_nexus": true,
+            "solid_reactive_multinexus": true,
+            "splash": true,
+            "multisplash": true,
+            "solid_splash": true,
+            "solid_multisplash": true,
+            "pixel_rain": true,
+            "pixel_fractal": true
+        }
+    },
+    "matrix_pins": {
+        "direct": [
+            ["B13", "A1", "B11", "B1", "A4", "B10", "B2", "A5", "B0", "A7", "A6"]
+        ]
+    },
+    "encoder": {
+        "rotary": [
+            {"pin_a": "B14", "pin_b": "B15", "resolution": 4}
+        ]
+    },
+    "layouts": {
+        "LAYOUT": {
+            "layout": [
+                {"matrix": [0, 0],  "x": 0,    "y": 0, "label": "Enc Btn"},
+                {"matrix": [0, 1],  "x": 2,    "y": 0},
+                {"matrix": [0, 2],  "x": 3.25, "y": 0},
+                {"matrix": [0, 3],  "x": 4.25, "y": 0},
+                {"matrix": [0, 4],  "x": 2,    "y": 1},
+                {"matrix": [0, 5],  "x": 3.25, "y": 1},
+                {"matrix": [0, 6],  "x": 4.25, "y": 1},
+                {"matrix": [0, 7],  "x": 2,    "y": 2},
+                {"matrix": [0, 8],  "x": 3.25, "y": 2},
+                {"matrix": [0, 9],  "x": 4.25, "y": 2},
+                {"matrix": [0, 10], "x": 2,    "y": 3}
+            ]
+        }
+    }
+}

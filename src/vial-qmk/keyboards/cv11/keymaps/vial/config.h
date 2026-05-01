@@ -1,0 +1,7 @@
+// SPDX-License-Identifier: BSD-2-Clause
+
+#pragma once
+
+#define VIAL_KEYBOARD_UID {0x05, 0xC8, 0x8A, 0x34, 0xA2, 0xB5, 0xD5, 0xFD}
+
+#define VIAL_INSECURE
