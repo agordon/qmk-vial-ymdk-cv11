@@ -1,7 +1,12 @@
 // SPDX-License-Identifier: BSD-2-Clause
+
 // Sadly, it seems there's no way (or at least I didn't find one)
 // to enable MIDI_ADVANCED from inside keyboard.json (a way that actually works)
 #define MIDI_ADVANCED
+
+// The Rotary Encoder (pin B13, defined as first key in "keyboard.json")
+#define BOOTMAGIC_ROW 0
+#define BOOTMAGIC_COLUMN 0
 
 // The STM32F103C8 flash-size register lies and reports 64KB instead of the
 // actual 128KB physical flash. Without this override, wear_leveling_efl reads

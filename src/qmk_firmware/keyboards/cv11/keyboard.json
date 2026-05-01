@@ -3,9 +3,8 @@
     "keyboard_name": "CV11-gordon",
     "maintainer": "qmk",
     "development_board": "bluepill",
-    "bootloader": "custom",
+    "bootloader": "tinyuf2",
     "processor": "STM32F103",
-    "url": "",
     "usb": {
         "device_version": "0.0.2",
         "pid": "0x1102",
