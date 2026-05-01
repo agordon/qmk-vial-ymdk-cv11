@@ -10,6 +10,30 @@ It has 10 keys + 1 Rotary Encoder (Left/Right/Push), and 11 RGB LEDs.
 
 Common search terms are "YMDK CV11 11-Key Keypad"
 
+## Table of Contents
+
+- [Overview](#overview)
+  - [Hardware](#hardware)
+  - [Photos](#photos)
+  - [Original Software](#original-software)
+- [QMK/Vial firmware Overview](#qmkvial-firmware-overview)
+  - [Pinout](#pinout)
+  - [STM32 Clone Flash Size](#stm32-clone-flash-size)
+  - [Bootloader](#bootloader)
+  - [Activating DFU/Bootloader/UF2 mode](#activating-dfubootloaderuf2-mode)
+  - [Keys](#keys)
+  - [WS2318 Driver: PWM+DMA](#ws2318-driver-pwmdma)
+- [Using pre-built firmware](#using-pre-built-firmware)
+- [Building QMK/VIA firmware for CV11](#building-qmkvia-firmware-for-cv11)
+- [Building VIAL firmware for CV11](#building-vial-firmware-for-cv11)
+- [Troubleshooting](#troubleshooting)
+  - [Note about STM32F103 Flash Size](#note-about-stm32f103-flash-size)
+  - [Reading Flash Directly](#reading-flash-directly)
+  - [Writing the original firmware](#writing-the-original-firmware)
+  - [Writing QMK/VIAL firmware directly](#writing-qmkvial-firmware-directly)
+  - [Rebooting the CV11 Keypad using openocd](#rebooting-the-cv11-keypad-using-openocd)
+  - [On-Chip Debugging and Reading Memory](#on-chip-debugging-and-reading-memory)
+
 ## Overview
 
 ### Hardware
