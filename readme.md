@@ -325,20 +325,20 @@ The order of the LEDs is the same as the order of the keys as listed in the prev
 Simply copy the files to the "USB Mass Storage" evice that will appear (typically named `MT.KEY`).
 
 | File | Framework | Initial Keys Mapping |
-|---|---|---|---|---|
+|---|---|---|
 | [ymdk_cv11_vial_midi.uf2](uf2-firmwares/vial/ymdk_cv11_vial_midi.uf2) | vial | MIDI |
 | [ymdk_cv11_vial.uf2](uf2-firmwares/vial/ymdk_cv11_vial.uf2) | vial | 1-9, ESC, Volume Control |
-| [ymdk_cv11_default.uf2](uf2-firmwares/qmk-via/ymdk_cv11_default.uf2) |  qmk | 1-9, ESC, Volume Control |
+| [ymdk_cv11_default.uf2](uf2-firmwares/qmk-via/ymdk_cv11_default.uf2) | qmk | 1-9, ESC, Volume Control |
 | [ymdk_cv11_midi.uf2](uf2-firmwares/qmk-via/ymdk_cv11_midi.uf2) | qmk | MIDI |
 
-This are binary firmware, can be uploaded to the device using OpenCD (see details below).
+These are binary firmware, can be uploaded to the device using OpenOCD (see details below).
 
 | File | Framework | Initial Keys Mapping |
-|---|---|---|---|---|
-| [ymdk_cv11_default.bin](uf2-firmwares/qmk-via/ymdk_cv11_default.bin) | qmk | 1-9, ESC, Volume Control | |
-| [ymdk_cv11_midi.bin](uf2-firmwares/qmk-via/ymdk_cv11_midi.bin) |  qmk | MIDI | |
-| [ymdk_cv11_vial.bin](uf2-firmwares/vial/ymdk_cv11_vial.bin) | vial | 1-9, ESC, Volume Control | |
-| [ymdk_cv11_vial_midi.bin](uf2-firmwares/vial/ymdk_cv11_vial_midi.bin) | vial | MIDI | |
+|---|---|---|
+| [ymdk_cv11_default.bin](uf2-firmwares/qmk-via/ymdk_cv11_default.bin) | qmk | 1-9, ESC, Volume Control |
+| [ymdk_cv11_midi.bin](uf2-firmwares/qmk-via/ymdk_cv11_midi.bin) | qmk | MIDI |
+| [ymdk_cv11_vial.bin](uf2-firmwares/vial/ymdk_cv11_vial.bin) | vial | 1-9, ESC, Volume Control |
+| [ymdk_cv11_vial_midi.bin](uf2-firmwares/vial/ymdk_cv11_vial_midi.bin) | vial | MIDI |
 
 
 ## Building QMK/VIA firmware for CV11
