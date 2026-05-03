@@ -317,7 +317,28 @@ The order of the LEDs is the same as the order of the keys as listed in the prev
 
 ## Using pre-built firmware
 
-> **DO THIS AT YOUR OWN RISK, THIS PROJECT COMES WITH ABSOLUTELY NO REPSONSIBILITY FOR BRICKING YOUR KEYPAD**
+> **USE AT YOUR OWN RISK, THIS PROJECT COMES WITH ABSOLUTELY NO REPSONSIBILITY FOR BRICKING YOUR KEYPAD**
+
+### UF2 Firmware
+
+`UF2` files can be uploaded to the device after booting into DFU/Bootloader mode.
+Simply copy the files to the "USB Mass Storage" evice that will appear (typically named `MT.KEY`).
+
+| File | Framework | Initial Keys Mapping |
+|---|---|---|---|---|
+| [ymdk_cv11_vial_midi.uf2](uf2-firmwares/vial/ymdk_cv11_vial_midi.uf2) | vial | MIDI |
+| [ymdk_cv11_vial.uf2](uf2-firmwares/vial/ymdk_cv11_vial.uf2) | vial | 1-9, ESC, Volume Control |
+| [ymdk_cv11_default.uf2](uf2-firmwares/qmk-via/ymdk_cv11_default.uf2) |  qmk | 1-9, ESC, Volume Control |
+| [ymdk_cv11_midi.uf2](uf2-firmwares/qmk-via/ymdk_cv11_midi.uf2) | qmk | MIDI |
+
+This are binary firmware, can be uploaded to the device using OpenCD (see details below).
+
+| File | Framework | Initial Keys Mapping |
+|---|---|---|---|---|
+| [ymdk_cv11_default.bin](uf2-firmwares/qmk-via/ymdk_cv11_default.bin) | qmk | 1-9, ESC, Volume Control | |
+| [ymdk_cv11_midi.bin](uf2-firmwares/qmk-via/ymdk_cv11_midi.bin) |  qmk | MIDI | |
+| [ymdk_cv11_vial.bin](uf2-firmwares/vial/ymdk_cv11_vial.bin) | vial | 1-9, ESC, Volume Control | |
+| [ymdk_cv11_vial_midi.bin](uf2-firmwares/vial/ymdk_cv11_vial_midi.bin) | vial | MIDI | |
 
 
 ## Building QMK/VIA firmware for CV11
@@ -330,20 +351,21 @@ The order of the LEDs is the same as the order of the keys as listed in the prev
    directory from this project into your `qmk_firmware/keyboards` directory.
 4. run:
     ```
-    qmk compile -kb cv11 -km default
+    qmk compile -kb ymdk/cv11 -km default
     ```
-   To build the `cv11_default.uf2` file (will be stored in `qmk_firmware/cv11_default.uf2`).
+   To build the `ymdk_cv11_default.uf2` file (will be stored in `qmk_firmware/ymdk_cv11_default.uf2`).
 5. Boot the CV11 keypad into DFU/bootloader mode (by pressing and holding the rotary encoder button
    when plugging in the USB cord)
 6. If using Windows/Mac - a new USB drive will appear (likely called `MT.KEY`).
 7. If using Linux (without GUI) - check `dmesg` for which device appeared. Note that it will be a drive
    without a partition (i.e. `/dev/sdg` not `/dev/sdg1`).
-8. Copy the new `cv11_default.uf2` file to the USB drive, and by sure to **SAFELY DISCONNECT** using
+8. Copy the new `ymdk_cv11_default.uf2` file to the USB drive, and by sure to **SAFELY DISCONNECT** using
    your operating system's method of "safely disconnect USB device".
    (Simiarly on linux, it is critical to do `sync` and clean `umount` - though it's possible that the
    USB device will disconnect and reboot once `sync` is complete, before doing `umount` - that's still OK).
 9. Enjoy!
-10. A MIDI variant: run `qmk compile -kb cv11 -km midi` to get `cv11_midi.uf2` - a keypad whose default configuration
+10. A MIDI variant: run `qmk compile -kb ymdk/cv11 -km midi` to get `ymdk_cv11_midi.uf2` - 
+   a keypad whose default configuration
    is ALL MIDI keys (great for QLAB, which is the original goal of this project).
    If this means nothing to you - just ignore MIDI all together.
 
@@ -362,14 +384,14 @@ qmk setup
 ( cd $HOME ; git clone http://github.com/agordon/qmk-vial-ymdk-cv11 )
 
 # Copy CV11 into qmk_firmware
-cp -r ~/qmk-vial-cv11/src/qmk_firmware/keyboards/cv11 ~/qmk_firmware/keyboards
+cp -r ~/qmk-vial-cv11/src/qmk_firmware/keyboards/ymdk/cv11 ~/qmk_firmware/keyboards/ymdk
 
 # Build CV11
-qmk compile -kb cv11 -km default
+qmk compile -kb ymdk/cv11 -km default
 
 # See the result:
-$ file cv11_default.uf2
-cv11_default.uf2: UF2 firmware image, family ST STM32F103, address 0x8004000, 156 total blocks
+$ file ymdk_cv11_default.uf2
+ymdk_cv11_default.uf2: UF2 firmware image, family ST STM32F103, address 0x8004000, 156 total blocks
 
 # Assuming the Keypad is already in DFU/Bootloader mode, find the drive
 # ( /dev/sdk in the example below - yours will differ 0
@@ -391,7 +413,7 @@ total 257
 cp -r /tmp/qmk_uf2 ~/cv11-original-firmware
 
 # Overwrite with new firmware
-sudo cp cv11_default.uf2 /tmp/qmk_uf2/
+sudo cp ymdk_cv11_default.uf2 /tmp/qmk_uf2/
 sync
 
 # At this point the CV11 likely rebooted itself and disappeard from USB/DMESG,
@@ -414,20 +436,20 @@ sudo umount /dev/sdk
    directory from this project into your `vial-qmk/keyboards` directory.
 4. run:
     ```
-    qmk compile -kb cv11 -km vial
+    qmk compile -kb ymdk/cv11 -km vial
     ```
-   To build the `cv11_vial.uf2` file (will be stored in `vial-qmk/cv11_vial.uf2`).
+   To build the `ymdk_cv11_vial.uf2` file (will be stored in `vial-qmk/ymdk_cv11_vial.uf2`).
 5. Boot the CV11 keypad into DFU/bootloader mode (by pressing and holding the rotary encoder button
    when plugging in the USB cord)
 6. If using Windows/Mac - a new USB drive will appear (likely called `MT.KEY`).
 7. If using Linux (without GUI) - check `dmesg` for which device appeared. Note that it will be a drive
    without a partition (i.e. `/dev/sdg` not `/dev/sdg1`).
-8. Copy the new `cv11_default.uf2` file to the USB drive, and by sure to **SAFELY DISCONNECT** using
+8. Copy the new `ymdk_cv11_default.uf2` file to the USB drive, and by sure to **SAFELY DISCONNECT** using
    your operating system's method of "safely disconnect USB device".
    (Simiarly on linux, it is critical to do `sync` and clean `umount` - though it's possible that the
    USB device will disconnect and reboot once `sync` is complete, before doing `umount` - that's still OK).
 9. Enjoy!
-10. A MIDI variant: run `qmk compile -kb cv11 -km vial_midi` to get `cv11_vial_midi.uf2` - a keypad whose 
+10. A MIDI variant: run `qmk compile -kb ymdk/cv11 -km vial_midi` to get `ymdk_cv11_vial_midi.uf2` - a keypad whose 
    default configuration is ALL MIDI keys (great for QLAB, which is the
    original goal of this project).
    If this means nothing to you - just ignore MIDI all together.
@@ -458,11 +480,11 @@ qmk env
 cp -r ~/qmk-vial-cv11/src/vial-qmk/keyboards/cv11 ~/vial-qmk/keyboards
 
 # Build CV11
-qmk compile -kb cv11 -km vial
+qmk compile -kb ymdk/cv11 -km vial
 
 # See the result:
-$ file cv11_vial.uf2
-cv11_vial.uf2: UF2 firmware image, family ST STM32F103, address 0x8004000, 156 total blocks
+$ file ymdk_cv11_vial.uf2
+ymdk_cv11_vial.uf2: UF2 firmware image, family ST STM32F103, address 0x8004000, 156 total blocks
 
 # Assuming the Keypad is already in DFU/Bootloader mode, find the drive
 # ( /dev/sdk in the example below - yours will differ 0
@@ -484,7 +506,7 @@ total 257
 cp -r /tmp/qmk_uf2 ~/cv11-original-firmware
 
 # Overwrite with new firmware
-sudo cp cv11_vial.uf2 /tmp/qmk_uf2/
+sudo cp ymdk_cv11_vial.uf2 /tmp/qmk_uf2/
 sync
 
 # At this point the CV11 likely rebooted itself and disappeard from USB/DMESG,
@@ -544,12 +566,12 @@ openocd -f interface/stlink.cfg -f target/stm32f1x.cfg -c 'COMMAND;COMMAND;'
 
 I recommend using this (note the `set` must appear BEFORE `-f stm32f1x`):
 ```
-openocd -c 'set FLASH_SIZE=0x20000' -f interface/stlink.cfg -f target/stm32f1x.cfg -c 'COMMAND;COMMAND;'
+openocd -c 'set FLASH_SIZE 0x20000' -f interface/stlink.cfg -f target/stm32f1x.cfg -c 'COMMAND;COMMAND;'
 ```
 
 Make your life easier with an alias (which we'll use below):
 ```
-alias openocd_cv11="openocd -c 'set FLASH_SIZE=0x20000' -f interface/stlink.cfg -f target/stm32f1x.cfg"
+alias openocd_cv11="openocd -c 'set FLASH_SIZE 0x20000' -f interface/stlink.cfg -f target/stm32f1x.cfg"
 ```
 
 `udev` rule if ST-Link needs non-root access:
@@ -560,6 +582,7 @@ echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="0483", ATTR{idProduct}=="3748", MODE="0
 sudo udevadm control --reload-rules && sudo udevadm trigger
 ```
 
+Also see helper scripts in [openocd_scripts](openocd_scripts).
 
 ### Reading Flash Directly
 
@@ -604,41 +627,45 @@ openocd_cv11 \
 
 ### Writing QMK/VIAL firmware directly
 
-Once `openocd` is working, using it to update firmware is MUCH faster
+Once `openocd` is working, using it to update firmware is much faster
 than rebooting into DFU/Bootloader every time (and, it can be easily automated, too).
 
-To do that, edit `rules.mk` and **COMMENT OUT** the following settings:
+To do that, edit `keyboard.json` and change `bootloader` from `tinyuf2` to `custom`:
 ```
-BOOTLOADER = tinyuf2
-STM32_BOOTLOADER_ADDRESS = 0x08004000
-UF2_FAMILY = 0x5ee21072
+    "bootloader": "custom",
 ```
 
-Once disabled, every time you rebuild your qmk/vial project, it will generate
+Once changed, every time you rebuild your qmk/vial project, it will generate
 a binary file suitable for openocd, instead of a `UF2` file:
 
 ```
-$ qmk compile -kb cv11 -km default
+$ qmk compile -kb ymdk/cv11 -km default
 ...
-Creating load file for flashing: .build/cv11_default.hex     [OK]
+Creating load file for flashing: .build/ymdk_cv11_default.hex     [OK]
 
 Size after:
    text    data     bss     dec     hex filename
-      0   39826       0   39826    9b92 cv11_default.bin
+      0   39826       0   39826    9b92 ymdk_cv11_default.bin
 ```
 
 Now flash it efficiently with `openocd` without caring about DFU/Bootloader:
 
 ```
-openocd_cv11 -c "program cv11_default.bin 0x08004000 verify reset exit"
+openocd_cv11 -c "program ymdk_cv11_default.bin 0x08004000 verify reset exit"
 ```
 
 **IMPORTANT**: Note we are flashing starting at 0x8004000 - that is, we are skipping 16KB (0x4000)
 of flash - and keeping the DFU/Bootloader code intact.
 QMK is configured to build our code correctly (to be flashed at 16KB offset) in by `cv11/ld/STM32F103xB_dapboot.ld`.
 
-For "vial" - make the same change to `rules.mk` , and you'll get `cv11_vial.bin`
+For "vial" - make the same change to `keyboard.json` , and you'll get `ymdk_cv11_vial.bin`
 which can be flashed in the same way.
+
+**NOTE**: When flashing firmware directly with openocd, the EEPROM settings (technically: stored in flash)
+are KEPT from previous runs. If you change keymaps, this could cause some confusion.
+Recommended: Enter DFU/Bootloader to reset the EEPROM settings (this is done automatically by QMK's bootmagic
+feature). Alternatively: erase the entire flash with openOCD.
+
 
 ### Rebooting the CV11 Keypad using openocd
 

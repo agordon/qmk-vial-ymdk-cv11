@@ -10,8 +10,8 @@ MCU_LDSCRIPT = STM32F103xB_dapboot
 ## copying to the UF2 USB-Mass-Storage partition that will appear
 ## when the keyboard is booted info DFU/Bootloader mode.
 ##
-## Comment these out to generate a ".bin" firmware that is suitable
-## for direct flashing with ST-Link-V2/OpenOCD .
-BOOTLOADER = tinyuf2
+## In "keyboard.json", change "bootloader" to "custom" to
+## generate a ".bin" firmware that is suitable for direct flashing
+## with ST-Link-V2/OpenOCD
 STM32_BOOTLOADER_ADDRESS = 0x08004000
 UF2_FAMILY = 0x5ee21072
